@@ -1,0 +1,254 @@
+#root {
+  width: 100%;
+}
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: calc(48px + env(safe-area-inset-top))
+    calc(20px + env(safe-area-inset-right))
+    calc(48px + env(safe-area-inset-bottom))
+    calc(20px + env(safe-area-inset-left));
+  position: relative;
+  isolation: isolate;
+}
+
+.page::before,
+.page::after {
+  content: '';
+  position: absolute;
+  inset: auto;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 180, 200, 0.55),
+    rgba(255, 180, 200, 0)
+  );
+  z-index: -1;
+}
+
+.page::before {
+  top: 8%;
+  left: -60px;
+}
+
+.page::after {
+  bottom: 6%;
+  right: -40px;
+  background: radial-gradient(
+    circle,
+    rgba(154, 214, 255, 0.5),
+    rgba(154, 214, 255, 0)
+  );
+}
+
+.card {
+  width: min(720px, 100%);
+  padding: 40px 32px 36px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow:
+    0 24px 80px rgba(16, 24, 40, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  text-align: center;
+}
+
+.eyebrow {
+  font-size: 0.95rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #9a5271;
+  margin: 0 0 12px;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.6rem, 4vw, 3.6rem);
+  color: #2b1d29;
+  margin: 0;
+  line-height: 1.08;
+  display: grid;
+  gap: 8px;
+}
+
+h1 span {
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  font-weight: 600;
+  color: #b6587c;
+  letter-spacing: 0.04em;
+}
+
+.subtitle {
+  max-width: 540px;
+  margin: 18px auto 28px;
+  color: #4a3c47;
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+.playground {
+  position: relative;
+  height: clamp(180px, 30vh, 240px);
+  border-radius: 18px;
+  background: linear-gradient(135deg, #fff4f7 0%, #f4f9ff 100%);
+  border: 1px solid rgba(183, 116, 146, 0.2);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  border: none;
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  min-height: 44px;
+}
+
+.btn.yes {
+  background: #2f8f6b;
+  color: #ffffff;
+  box-shadow: 0 16px 30px rgba(47, 143, 107, 0.28);
+}
+
+.btn.yes:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btn.no {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #f8dfe6;
+  color: #9a3f64;
+  box-shadow: 0 12px 24px rgba(160, 74, 115, 0.2);
+}
+
+.hint {
+  margin: 20px 0 0;
+  color: #7b5d6f;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 520px) {
+  .card {
+    padding: 30px 18px 28px;
+    border-radius: 24px;
+  }
+
+  .playground {
+    height: clamp(170px, 28vh, 210px);
+  }
+
+  .subtitle {
+    margin: 16px auto 24px;
+  }
+}
+
+@media (max-width: 430px) {
+  .page {
+    padding: calc(40px + env(safe-area-inset-top))
+      calc(16px + env(safe-area-inset-right))
+      calc(36px + env(safe-area-inset-bottom))
+      calc(16px + env(safe-area-inset-left));
+  }
+
+  .card {
+    padding: 26px 16px 22px;
+  }
+
+  .eyebrow {
+    letter-spacing: 0.18em;
+    font-size: 0.9rem;
+  }
+
+  h1 {
+    font-size: clamp(2.1rem, 7vw, 2.9rem);
+    line-height: 1.05;
+  }
+
+  h1 span {
+    font-size: clamp(1.35rem, 5vw, 1.95rem);
+    line-height: 1.08;
+  }
+
+  .subtitle {
+    font-size: 0.96rem;
+    line-height: 1.4;
+    margin: 14px auto 20px;
+  }
+
+  .playground {
+    height: clamp(165px, 26vh, 195px);
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.98rem;
+  }
+
+  .hint {
+    font-size: 0.92rem;
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 932px) and (orientation: landscape) {
+  .page {
+    padding: calc(20px + env(safe-area-inset-top))
+      calc(18px + env(safe-area-inset-right))
+      calc(20px + env(safe-area-inset-bottom))
+      calc(18px + env(safe-area-inset-left));
+  }
+
+  .card {
+    width: min(760px, 100%);
+    padding: 18px 20px;
+    border-radius: 22px;
+  }
+
+  h1 {
+    font-size: clamp(1.9rem, 3.4vw, 2.4rem);
+    line-height: 1.03;
+    gap: 6px;
+  }
+
+  h1 span {
+    font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+  }
+
+  .subtitle {
+    margin: 12px auto 16px;
+    font-size: 0.95rem;
+  }
+
+  .playground {
+    height: clamp(140px, 30vh, 170px);
+  }
+
+  .btn {
+    padding: 8px 18px;
+    font-size: 0.95rem;
+  }
+
+  .hint {
+    margin-top: 12px;
+    font-size: 0.9rem;
+  }
+}
